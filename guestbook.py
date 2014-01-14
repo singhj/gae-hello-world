@@ -74,10 +74,12 @@ class Guestbook(webapp2.RequestHandler):
         query_params = {'guestbook_name': guestbook_name}
         self.redirect('/?' + urllib.urlencode(query_params))
 
-import delete_old_entities
 urls = [
     ('/', MainPage),
     ('/sign', Guestbook),
-    ('/clean', delete_old_entities.bulkdelete),
 ]
+import delete_old_entities
+urls += delete_old_entities.urls
+import url_fetch
+urls += url_fetch.urls
 application = webapp2.WSGIApplication(urls, debug=True)
