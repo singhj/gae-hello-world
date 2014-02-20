@@ -22,7 +22,7 @@ handlers:
   script: mapreduce.main.APP
 
 - url: /.*
-  script: guestbook.application
+  script: main.application
   login: required
 
 libraries:

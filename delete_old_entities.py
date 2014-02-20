@@ -29,7 +29,15 @@ class User(db.Model):
 class bulkdelete(webapp2.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = 'text/plain'
-        colls = ['Like', 'User']
+        colls = ['Like', 'User', 
+                 "FileMetadata",
+                 "_AE_MR_MapreduceControl",
+                 "_AE_MR_MapreduceState",
+                 "_AE_MR_ShardState",
+                 "_AE_MR_TaskPayload",
+                 "_AE_MR_MapreduceControl",
+                 "_AE_MR_ShardState",
+                 ]
         for coll in colls:
             q = db.GqlQuery("SELECT __key__ FROM " + coll)
             if 0 == q.count():

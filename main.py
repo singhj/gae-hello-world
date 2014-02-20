@@ -473,4 +473,16 @@ import delete_old_entities
 urls += delete_old_entities.urls
 import url_fetch
 urls += url_fetch.urls
-application = webapp2.WSGIApplication(urls, debug=True)
+# import read_twitter
+# urls += read_twitter.urls
+import read_tweepy
+urls += read_tweepy.urls
+
+sess_config = {}
+sess_config['webapp2_extras.sessions'] = {
+    'secret_key': 'dcd99df0-824a-4331-9a55-2d5900e27732'
+}
+
+# app = webapp2.WSGIApplication(routes, debug=True, config=sess_config)
+
+application = webapp2.WSGIApplication(urls, debug=True, config=sess_config)
